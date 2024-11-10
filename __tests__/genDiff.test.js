@@ -1,6 +1,6 @@
 /* eslint-env jest */
 import genDiff from '../src/diff.js';
-import parseFile from '../src/parcer.js';
+import parseFile from '../src/parsers.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -25,4 +25,23 @@ test('genDiff with flat JSON files', () => {
 }`;
 
     expect(genDiff(file1Data, file2Data).trim()).toEqual(expectedOutput.trim());
+});
+
+
+test('genDiff with flat yml files', () => {
+  const filepath1 = getFixturePath('file1.yml');
+  const filepath2 = getFixturePath('file2.yml');
+  const file1Data = parseFile(filepath1);
+  const file2Data = parseFile(filepath2);
+  
+  const expectedOutput = `{
+  - follow: false
+    host: hexlet.io
+  - proxy: 123.234.53.22
+  - timeout: 50
+  + timeout: 20
+  + verbose: true
+}`;
+
+expect(genDiff(file1Data, file2Data).trim()).toEqual(expectedOutput.trim());
 });

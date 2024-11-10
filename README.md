@@ -6,6 +6,10 @@
 
 ## Asciinema Recording
 
-Вот пример работы `gendiff.js`:
+Сравнение плоских файлов (JSON):
 
 [![asciicast](https://asciinema.org/a/C4611JJ1Q3EV9EUjiyK7dZQZX.svg)](https://asciinema.org/a/C4611JJ1Q3EV9EUjiyK7dZQZX)
+
+Сравнение плоских файлов (yaml):
+
+[![asciicast](https://asciinema.org/a/Z8W08pvuPy8N3GTK6whfyqDD6.svg)](https://asciinema.org/a/Z8W08pvuPy8N3GTK6whfyqDD6)
