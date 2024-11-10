@@ -4,10 +4,11 @@
   "main": "gendiff.js",
   "scripts": {
     "test": "npx jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "gendiff": "node ./bin/gendiff.js"
   },
   "bin": {
-    "gendiff": "./gendiff.js"
+    "gendiff": "./bin/gendiff.js"
   },
   "type": "module",
   "repository": {

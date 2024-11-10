@@ -3,6 +3,7 @@ import genDiff from '../src/diff.js';
 import parseFile from '../src/parsers.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import stylishFormatter from '../src/stylish.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -16,17 +17,52 @@ test('genDiff with flat JSON files', () => {
     const file2Data = parseFile(filepath2);
     
     const expectedOutput = `{
-  - follow: false
-    host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-  + timeout: 20
-  + verbose: true
+    common: {
+      + follow: false
+        setting1: Value 1
+      - setting2: 200
+      - setting3: true
+      + setting3: null
+      + setting4: blah blah
+      + setting5: {
+            key5: value5
+        }
+        setting6: {
+            doge: {
+              - wow: 
+              + wow: so much
+            }
+            key: value
+          + ops: vops
+        }
+    }
+    group1: {
+      - baz: bas
+      + baz: bars
+        foo: bar
+      - nest: {
+            key: value
+        }
+      + nest: str
+    }
+  - group2: {
+        abc: 12345
+        deep: {
+            id: 45
+        }
+    }
+  + group3: {
+        deep: {
+            id: {
+                number: 45
+            }
+        }
+        fee: 100500
+    }
 }`;
 
-    expect(genDiff(file1Data, file2Data).trim()).toEqual(expectedOutput.trim());
+expect(stylishFormatter(genDiff(file1Data, file2Data)).trim()).toEqual(expectedOutput.trim());
 });
-
 
 test('genDiff with flat yml files', () => {
   const filepath1 = getFixturePath('file1.yml');
@@ -35,13 +71,49 @@ test('genDiff with flat yml files', () => {
   const file2Data = parseFile(filepath2);
   
   const expectedOutput = `{
-  - follow: false
-    host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-  + timeout: 20
-  + verbose: true
+    common: {
+      + follow: false
+        setting1: Value 1
+      - setting2: 200
+      - setting3: true
+      + setting3: null
+      + setting4: blah blah
+      + setting5: {
+            key5: value5
+        }
+        setting6: {
+            doge: {
+              - wow: 
+              + wow: so much
+            }
+            key: value
+          + ops: vops
+        }
+    }
+    group1: {
+      - baz: bas
+      + baz: bars
+        foo: bar
+      - nest: {
+            key: value
+        }
+      + nest: str
+    }
+  - group2: {
+        abc: 12345
+        deep: {
+            id: 45
+        }
+    }
+  + group3: {
+        deep: {
+            id: {
+                number: 45
+            }
+        }
+        fee: 100500
+    }
 }`;
 
-expect(genDiff(file1Data, file2Data).trim()).toEqual(expectedOutput.trim());
+expect(stylishFormatter(genDiff(file1Data, file2Data)).trim()).toEqual(expectedOutput.trim());
 });
