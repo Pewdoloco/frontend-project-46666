@@ -13,3 +13,7 @@
 Сравнение плоских файлов (yaml):
 
 [![asciicast](https://asciinema.org/a/Z8W08pvuPy8N3GTK6whfyqDD6.svg)](https://asciinema.org/a/Z8W08pvuPy8N3GTK6whfyqDD6)
+
+Плоский формат :
+
+[![asciicast](https://asciinema.org/a/IuvKzYHtGDN5EtiOVHrFecjcC.svg)](https://asciinema.org/a/IuvKzYHtGDN5EtiOVHrFecjcC)
